@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sand Spline — Generative Art</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header id="controls">
+      <div class="control-row">
+        <div class="control-group brand">
+          <span class="logo">Sand Spline</span>
+        </div>
+
+        <div class="control-group">
+          <label>Preset</label>
+          <select id="preset">
+            <option value="default">Flowing River</option>
+            <option value="storm">Storm</option>
+            <option value="gentle">Gentle Drift</option>
+            <option value="chaos">Chaos</option>
+            <option value="minimal">Minimal</option>
+            <option value="dense">Dense Weave</option>
+            <option value="circle">Circle</option>
+            <option value="radial">Radial Burst</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label>Splines <span id="numSplinesVal">8</span></label>
+          <input type="range" id="numSplines" min="1" max="40" value="8" step="1">
+        </div>
+
+        <div class="control-group">
+          <label>Control Pts <span id="numPointsVal">6</span></label>
+          <input type="range" id="numPoints" min="3" max="20" value="6" step="1">
+        </div>
+
+        <div class="control-group">
+          <label>Grains <span id="grainsVal">80</span></label>
+          <input type="range" id="grains" min="10" max="300" value="80" step="5">
+        </div>
+
+        <div class="control-group">
+          <label>Noise <span id="noiseVal">0.0020</span></label>
+          <input type="range" id="noise" min="0.0001" max="0.02" value="0.002" step="0.0001">
+        </div>
+
+        <div class="control-group">
+          <label>Noise Growth <span id="noiseGrowthVal">1.5</span></label>
+          <input type="range" id="noiseGrowth" min="1.0" max="4.0" value="1.5" step="0.1">
+        </div>
+
+        <div class="control-group">
+          <label>Opacity <span id="opacityVal">0.030</span></label>
+          <input type="range" id="opacity" min="0.005" max="0.15" value="0.03" step="0.001">
+        </div>
+
+        <div class="control-group">
+          <label>Speed <span id="speedVal">3</span></label>
+          <input type="range" id="speed" min="1" max="20" value="3" step="1">
+        </div>
+
+        <div class="control-group">
+          <label>Palette</label>
+          <select id="palette">
+            <option value="ink">Ink</option>
+            <option value="ocean">Ocean</option>
+            <option value="sunset">Sunset</option>
+            <option value="forest">Forest</option>
+            <option value="neon">Neon</option>
+            <option value="earth">Earth</option>
+            <option value="mono">Monochrome</option>
+            <option value="pastel">Pastel</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label>Background</label>
+          <select id="bgColor">
+            <option value="#faf8f5">Cream</option>
+            <option value="#ffffff">White</option>
+            <option value="#1a1a2e">Dark Blue</option>
+            <option value="#0d0d0d">Black</option>
+            <option value="#f0ead6">Eggshell</option>
+            <option value="#2d2d2d">Charcoal</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label>Layout</label>
+          <select id="layout">
+            <option value="horizontal">Horizontal</option>
+            <option value="vertical">Vertical</option>
+            <option value="radial">Radial</option>
+            <option value="random">Random</option>
+          </select>
+        </div>
+
+        <div class="control-group buttons">
+          <button id="btnRestart" title="Restart">&#x21bb; New</button>
+          <button id="btnPause" title="Pause / Resume">&#x23f8; Pause</button>
+          <button id="btnSave" title="Save PNG">&#x2913; Save</button>
+        </div>
+
+        <div class="control-group stats">
+          <span id="iterCount">0</span> iterations
+        </div>
+      </div>
+    </header>
+
+    <main id="canvas-container">
+      <canvas id="canvas"></canvas>
+    </main>
+  </div>
+
+  <script src="sand-spline.js"></script>
+</body>
+</html>
