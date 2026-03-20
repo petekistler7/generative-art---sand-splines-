@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lewes Nature Walk — Itinerary</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #faf8f5;
+      color: #2d2d2d;
+      padding: 2rem 1rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+    .subtitle { color: #666; font-size: 0.95rem; margin-bottom: 2rem; }
+    .map-btn {
+      display: block;
+      background: #4285F4;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: background 0.2s;
+    }
+    .map-btn:hover { background: #3367D6; }
+    .map-btn .icon { margin-right: 0.5rem; }
+    .stats {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: #fff;
+      border: 1px solid #e0ddd8;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      flex: 1;
+      min-width: 130px;
+    }
+    .stat-label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-value { font-size: 1rem; font-weight: 600; margin-top: 0.2rem; }
+    h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 1rem; }
+    .stops { list-style: none; }
+    .stop {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid #ece9e3;
+    }
+    .stop:last-child { border-bottom: none; }
+    .stop-num {
+      width: 28px;
+      height: 28px;
+      background: #4285F4;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .stop-num.end { background: #34A853; }
+    .stop-name { font-weight: 600; font-size: 0.95rem; }
+    .stop-note { font-size: 0.82rem; color: #777; margin-top: 0.2rem; }
+    .tip {
+      margin-top: 2rem;
+      background: #fff8e6;
+      border-left: 3px solid #f4b400;
+      padding: 0.85rem 1rem;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.88rem;
+      color: #555;
+    }
+    .tip strong { color: #333; }
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #aaa;
+      text-align: center;
+    }
+    footer a { color: #aaa; }
+  </style>
+</head>
+<body>
+
+  <h1>Lewes Nature Walk</h1>
+  <p class="subtitle">Mount Caburn loop via the River Ouse</p>
+
+  <a class="map-btn"
+     href="https://www.google.com/maps/dir/?api=1&origin=Lewes+Railway+Station,+Lewes,+East+Sussex,+UK&destination=Lewes+Railway+Station,+Lewes,+East+Sussex,+UK&waypoints=Cliffe+High+Street,+Lewes,+East+Sussex,+UK|River+Ouse+Bridge,+Lewes,+East+Sussex,+UK|Mount+Caburn,+East+Sussex,+UK|Glynde+Reach,+East+Sussex,+UK|Lewes+Priory+Park,+Lewes,+East+Sussex,+UK&travelmode=walking"
+     target="_blank" rel="noopener">
+    <span class="icon">&#x1F5FA;</span> Open in Google Maps
+  </a>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Distance</div>
+      <div class="stat-value">~9–11 km</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Duration</div>
+      <div class="stat-value">2.5–3.5 hrs</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Difficulty</div>
+      <div class="stat-value">Moderate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Mode</div>
+      <div class="stat-value">Walking</div>
+    </div>
+  </div>
+
+  <h2>Stops in order</h2>
+  <ol class="stops">
+    <li class="stop">
+      <div class="stop-num">1</div>
+      <div>
+        <div class="stop-name">Lewes Railway Station</div>
+        <div class="stop-note">Start here — optional coffee at Ground Coffee House nearby</div>
+      </div>
+    </li>
+    <li class="stop">
+      <div class="stop-num">2</div>
+      <div>
+        <div class="stop-name">Cliffe High Street</div>
+        <div class="stop-note">Cross toward the countryside</div>
+      </div>
+    </li>
+    <li class="stop">
+      <div class="stop-num">3</div>
+      <div>
+        <div class="stop-name">River Ouse Bridge</div>
+        <div class="stop-note">Cross into open countryside</div>
+      </div>
+    </li>
+    <li class="stop">
+      <div class="stop-num">4</div>
+      <div>
+        <div class="stop-name">Mount Caburn</div>
+        <div class="stop-note">Main viewpoint — steady climb, worth it</div>
+      </div>
+    </li>
+    <li class="stop">
+      <div class="stop-num">5</div>
+      <div>
+        <div class="stop-name">Glynde Reach</div>
+        <div class="stop-note">Scenic riverside return path</div>
+      </div>
+    </li>
+    <li class="stop">
+      <div class="stop-num">6</div>
+      <div>
+        <div class="stop-name">Lewes Priory Park</div>
+        <div class="stop-note">Optional stop — ruins and open green</div>
+      </div>
+    </li>
+    <li class="stop">
+      <div class="stop-num end">7</div>
+      <div>
+        <div class="stop-name">Lewes Railway Station</div>
+        <div class="stop-note">End of route</div>
+      </div>
+    </li>
+  </ol>
+
+  <div class="tip">
+    <strong>Tip:</strong> Google Maps may miss some South Downs footpaths. Follow signs for "Mount Caburn" or use AllTrails alongside Maps if needed.
+  </div>
+
+  <footer>
+    <a href="index.html">Back to Sand Spline</a>
+  </footer>
+
+</body>
+</html>
