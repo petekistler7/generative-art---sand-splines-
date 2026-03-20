@@ -83,6 +83,36 @@
       color: #555;
     }
     .tip strong { color: #333; }
+    .section-divider {
+      margin: 2.5rem 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-divider h2 { margin-bottom: 0; }
+    .places { list-style: none; margin-bottom: 0.5rem; }
+    .place {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #ece9e3;
+    }
+    .place:last-child { border-bottom: none; }
+    .place-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .place-name { font-weight: 600; font-size: 0.95rem; }
+    .place-tag {
+      font-size: 0.7rem;
+      background: #f0ede6;
+      color: #777;
+      border-radius: 4px;
+      padding: 0.15rem 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .place-note { font-size: 0.82rem; color: #777; margin-top: 0.2rem; }
     footer {
       margin-top: 2.5rem;
       font-size: 0.8rem;
@@ -178,6 +208,167 @@
   <div class="tip">
     <strong>Tip:</strong> Google Maps may miss some South Downs footpaths. Follow signs for "Mount Caburn" or use AllTrails alongside Maps if needed.
   </div>
+
+  <!-- COFFEE -->
+  <div class="section-divider">
+    <h2>Coffee</h2>
+  </div>
+  <ul class="places">
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Ground Lewes</span>
+        <span class="place-tag">Café</span>
+      </div>
+      <div class="place-note">Local favourite on Lansdown Road (turn right out of station past the Depot Cinema). The cappuccino is particularly good. Views of the South Downs while you wait.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Pestle and Mortar</span>
+        <span class="place-tag">Café · Noodle bar · Asian grocery</span>
+      </div>
+      <div class="place-note">Noodle bar, café, tea room and Asian grocery rolled into one, with a lovely hidden garden out the back. Close to Ground Lewes.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Cafe Du Jardin</span>
+        <span class="place-tag">French café</span>
+      </div>
+      <div class="place-note">Tucked in the courtyard of Pastorale Antiques on Malling Street. Open for French-style breakfasts (coffee, croissants, omelettes) and lunch (baked camembert, croque monsieur, steak frites). Hidden gem.</div>
+    </li>
+  </ul>
+
+  <!-- FOOD & DRINK -->
+  <div class="section-divider">
+    <h2>Food &amp; Drink</h2>
+  </div>
+  <ul class="places">
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">The Swan Inn</span>
+        <span class="place-tag">Pub · Lunch</span>
+      </div>
+      <div class="place-note">Beloved local pub at the end of Southover Street. Cosy with a roaring fire in winter and a chocolate-box cottage garden for summer. Simple, well-priced food — mackerel salad, Sunday roasts. Relaxed, time-worn atmosphere.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Anne of Cleves House Café</span>
+        <span class="place-tag">Café · Garden</span>
+      </div>
+      <div class="place-note">Café inside the Tudor garden of the 16th-century Anne of Cleves House on Southover Street. A peaceful spot.</div>
+    </li>
+  </ul>
+
+  <!-- SHOPPING -->
+  <div class="section-divider">
+    <h2>Shopping</h2>
+  </div>
+  <ul class="places">
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Fifteenth Century Bookshop</span>
+        <span class="place-tag">Bookshop</span>
+      </div>
+      <div class="place-note">A highlight of the High Street — rare and collectable books in a stunning yellow half-timbered building. At the foot of Keere Street, the town's most famous twitten.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">The Needlemakers</span>
+        <span class="place-tag">Shopping · Vintage</span>
+      </div>
+      <div class="place-note">Victorian red-brick landmark that was a WW1 needle factory. Now home to unusual boutiques across three floors. Don't miss the vintage shop downstairs with an incredible collection of vintage tins.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Lewes Flea Market</span>
+        <span class="place-tag">Market · Antiques</span>
+      </div>
+      <div class="place-note">On Market Street, almost opposite The Needlemakers. All kinds of trinkets and curios — furniture, ceramics, jewellery, artwork.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Pastorale Antiques</span>
+        <span class="place-tag">Antiques</span>
+      </div>
+      <div class="place-note">Malling Street, in a dreamy faded yellow building that was once a coaching inn. Specialises in French antiques; stock spills out into the courtyard. Also home to Cafe Du Jardin.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">71 The Maker's Gallery</span>
+        <span class="place-tag">Jewellery · Gallery</span>
+      </div>
+      <div class="place-note">Beautiful jewellery and craft on the High Street.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Goods Lewes</span>
+        <span class="place-tag">Homewares · Vintage</span>
+      </div>
+      <div class="place-note">Dreamy mix of vintage cane furniture and accessories like funky blankets. High Street.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">From Victoria</span>
+        <span class="place-tag">Gift shop</span>
+      </div>
+      <div class="place-note">Botanic-themed gift shop on the High Street.</div>
+    </li>
+  </ul>
+
+  <!-- SIGHTS & HIDDEN GEMS -->
+  <div class="section-divider">
+    <h2>Sights &amp; Hidden Gems</h2>
+  </div>
+  <ul class="places">
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Keere Street &amp; the Twittens</span>
+        <span class="place-tag">Walking · History</span>
+      </div>
+      <div class="place-note">Keere Street is Lewes's most famous twitten — a cobbled lane on an incline lined with heritage homes and secret gardens. The wider network of narrow Anglo-Saxon alleyways (Paine's Passage, St Swithuns Lane, Pipe Passage, Green Lane) is full of historic houses, trailing plants and great views.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Anne of Cleves House</span>
+        <span class="place-tag">History · Museum</span>
+      </div>
+      <div class="place-note">16th-century timber-fronted Wealden hall house on Southover Street. Given to Anne of Cleves in her divorce settlement from Henry VIII in 1541 (she never lived here). Good period architecture and a Tudor garden.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">The Round House</span>
+        <span class="place-tag">Curiosity</span>
+      </div>
+      <div class="place-note">A bizarre home set inside an old windmill on Pipe Passage — bought by Virginia Woolf but never lived in. Easy to miss, worth finding.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Harvey's Brewery</span>
+        <span class="place-tag">Landmark</span>
+      </div>
+      <div class="place-note">Pass it on Cliffe High Street heading east across the bridge over the River Ouse. Lewes's own brewery, a local institution.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Lewes Land Nature Reserve</span>
+        <span class="place-tag">Nature · Green space</span>
+      </div>
+      <div class="place-note">A hidden town green space on an old railway yard reclaimed by nature, complete with a spiralling reed bed. Near the golf course with views across town.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Depot Cinema</span>
+        <span class="place-tag">Cinema</span>
+      </div>
+      <div class="place-note">Independent arthouse cinema just outside the station on Lewes Road. Screens off-beat and independent films.</div>
+    </li>
+    <li class="place">
+      <div class="place-header">
+        <span class="place-name">Glynde &amp; Glyndebourne Opera House</span>
+        <span class="place-tag">Day trip · Culture</span>
+      </div>
+      <div class="place-note">A footpath near Lewes heads to the pretty village of Glynde, home to the world-famous Glyndebourne Opera House. Worth the extra walk if you have time.</div>
+    </li>
+  </ul>
 
   <footer>
     <a href="index.html">Back to Sand Spline</a>
