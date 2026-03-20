@@ -3,376 +3,586 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lewes Nature Walk — Itinerary</title>
+  <title>A Day in Lewes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f5f0e8;
+      --surface:   #fffdf9;
+      --surface2:  #f0ebe0;
+      --text:      #1c1712;
+      --text-mid:  #5a4f42;
+      --text-soft: #9a8e80;
+      --green:     #3d5c35;
+      --green-lt:  #e8f0e6;
+      --amber:     #9c6f22;
+      --amber-lt:  #fdf3e0;
+      --border:    #e2d9cc;
+      --shadow:    0 2px 12px rgba(60,40,10,0.08);
+      --shadow-lg: 0 8px 32px rgba(60,40,10,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #faf8f5;
-      color: #2d2d2d;
-      padding: 2rem 1rem;
-      max-width: 640px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      background: var(--green);
+      color: #fff;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 110%, rgba(255,255,255,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% -10%, rgba(255,255,255,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .hero-sub {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.72);
+      font-weight: 300;
+      max-width: 340px;
       margin: 0 auto;
     }
-    h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
-    .subtitle { color: #666; font-size: 0.95rem; margin-bottom: 2rem; }
-    .map-btn {
-      display: block;
-      background: #4285F4;
-      color: #fff;
-      text-decoration: none;
-      text-align: center;
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      transition: background 0.2s;
+
+    /* ── MAIN CONTENT ─────────────────────────────────── */
+    .content {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 1rem 4rem;
     }
-    .map-btn:hover { background: #3367D6; }
-    .map-btn .icon { margin-right: 0.5rem; }
-    .stats {
+
+    /* ── STATS BAR ────────────────────────────────────── */
+    .stats-bar {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin: 1.8rem 0 1.6rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
     }
     .stat {
-      background: #fff;
-      border: 1px solid #e0ddd8;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
       flex: 1;
-      min-width: 130px;
+      padding: 1rem 0.75rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
     }
-    .stat-label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
-    .stat-value { font-size: 1rem; font-weight: 600; margin-top: 0.2rem; }
-    h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 1rem; }
-    .stops { list-style: none; }
-    .stop {
+    .stat:last-child { border-right: none; }
+    .stat-icon { font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .stat-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-soft);
+      margin-top: 0.1rem;
+    }
+
+    /* ── MAP BUTTON ───────────────────────────────────── */
+    .map-btn {
       display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid #ece9e3;
-    }
-    .stop:last-child { border-bottom: none; }
-    .stop-num {
-      width: 28px;
-      height: 28px;
-      background: #4285F4;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: var(--green);
       color: #fff;
+      text-decoration: none;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(61,92,53,0.3);
+    }
+    .map-btn:hover {
+      background: #2e4527;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(61,92,53,0.38);
+    }
+    .map-btn:active { transform: translateY(0); }
+    .map-btn svg { flex-shrink: 0; }
+
+    /* ── SECTION HEADING ──────────────────────────────── */
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin: 2.8rem 0 1.25rem;
+    }
+    .section-head-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-head h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-mid);
+      white-space: nowrap;
+    }
+
+    /* ── WALK TIMELINE ────────────────────────────────── */
+    .timeline {
+      list-style: none;
+      position: relative;
+      padding-left: 2.4rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 13px;
+      top: 14px;
+      bottom: 14px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--green) 0%, var(--border) 100%);
+    }
+    .tl-stop {
+      position: relative;
+      padding: 0 0 1.5rem 1rem;
+    }
+    .tl-stop:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -2.4rem;
+      top: 3px;
+      width: 26px;
+      height: 26px;
+      background: var(--surface);
+      border: 2px solid var(--green);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      flex-shrink: 0;
+      color: var(--green);
+      z-index: 1;
     }
-    .stop-num.end { background: #34A853; }
-    .stop-name { font-weight: 600; font-size: 0.95rem; }
-    .stop-note { font-size: 0.82rem; color: #777; margin-top: 0.2rem; }
+    .tl-dot.start {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+    .tl-dot.end {
+      background: var(--amber);
+      color: #fff;
+      border-color: var(--amber);
+    }
+    .tl-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .tl-note {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      margin-top: 0.2rem;
+    }
+
+    /* ── TIP BOX ──────────────────────────────────────── */
     .tip {
-      margin-top: 2rem;
-      background: #fff8e6;
-      border-left: 3px solid #f4b400;
-      padding: 0.85rem 1rem;
-      border-radius: 0 6px 6px 0;
-      font-size: 0.88rem;
-      color: #555;
-    }
-    .tip strong { color: #333; }
-    .section-divider {
-      margin: 2.5rem 0 1rem;
+      background: var(--amber-lt);
+      border: 1px solid #e8c97a;
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      font-size: 0.84rem;
+      color: var(--text-mid);
+      margin-top: 1.8rem;
       display: flex;
-      align-items: center;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .tip-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .tip strong { color: var(--amber); }
+
+    /* ── PLACE CARDS ──────────────────────────────────── */
+    .places {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
       gap: 0.75rem;
     }
-    .section-divider h2 { margin-bottom: 0; }
-    .places { list-style: none; margin-bottom: 0.5rem; }
-    .place {
-      padding: 0.8rem 0;
-      border-bottom: 1px solid #ece9e3;
+    .place-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s, transform 0.15s;
     }
-    .place:last-child { border-bottom: none; }
-    .place-header {
+    .place-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-1px);
+    }
+    .place-top {
       display: flex;
-      align-items: baseline;
+      align-items: flex-start;
+      justify-content: space-between;
       gap: 0.5rem;
-      flex-wrap: wrap;
+      margin-bottom: 0.35rem;
     }
-    .place-name { font-weight: 600; font-size: 0.95rem; }
+    .place-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.3;
+    }
     .place-tag {
-      font-size: 0.7rem;
-      background: #f0ede6;
-      color: #777;
-      border-radius: 4px;
-      padding: 0.15rem 0.45rem;
+      font-size: 0.65rem;
+      font-weight: 500;
+      background: var(--green-lt);
+      color: var(--green);
+      border-radius: 20px;
+      padding: 0.2rem 0.6rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
     }
-    .place-note { font-size: 0.82rem; color: #777; margin-top: 0.2rem; }
-    footer {
-      margin-top: 2.5rem;
-      font-size: 0.8rem;
-      color: #aaa;
+    .place-note {
+      font-size: 0.83rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    .footer {
       text-align: center;
+      padding: 2rem 0 0;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
     }
-    footer a { color: #aaa; }
+    .footer a {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      text-decoration: none;
+    }
+    .footer a:hover { color: var(--text-mid); }
   </style>
 </head>
 <body>
 
-  <h1>Lewes Nature Walk</h1>
-  <p class="subtitle">Mount Caburn loop via the River Ouse</p>
+  <header class="hero">
+    <p class="hero-eyebrow">East Sussex · South Downs</p>
+    <h1>A Day in <em>Lewes</em></h1>
+    <p class="hero-sub">Mount Caburn loop, the twittens, and the best of the town</p>
+  </header>
 
-  <a class="map-btn"
-     href="https://www.google.com/maps/dir/?api=1&origin=Lewes+Railway+Station,+Lewes,+East+Sussex,+UK&destination=Lewes+Railway+Station,+Lewes,+East+Sussex,+UK&waypoints=Cliffe+High+Street,+Lewes,+East+Sussex,+UK|River+Ouse+Bridge,+Lewes,+East+Sussex,+UK|Mount+Caburn,+East+Sussex,+UK|Glynde+Reach,+East+Sussex,+UK|Lewes+Priory+Park,+Lewes,+East+Sussex,+UK&travelmode=walking"
-     target="_blank" rel="noopener">
-    <span class="icon">&#x1F5FA;</span> Open in Google Maps
-  </a>
+  <main class="content">
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-label">Distance</div>
-      <div class="stat-value">~9–11 km</div>
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-icon">🗺</div>
+        <span class="stat-value">9–11 km</span>
+        <div class="stat-label">Distance</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">⏱</div>
+        <span class="stat-value">2.5–3.5 hrs</span>
+        <div class="stat-label">Walk time</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">⛰</div>
+        <span class="stat-value">Moderate</span>
+        <div class="stat-label">Difficulty</div>
+      </div>
+      <div class="stat">
+        <div class="stat-icon">🚶</div>
+        <span class="stat-value">Walking</span>
+        <div class="stat-label">Mode</div>
+      </div>
     </div>
-    <div class="stat">
-      <div class="stat-label">Duration</div>
-      <div class="stat-value">2.5–3.5 hrs</div>
+
+    <!-- MAP BUTTON -->
+    <a class="map-btn"
+       href="https://www.google.com/maps/dir/?api=1&origin=Lewes+Railway+Station,+Lewes,+East+Sussex,+UK&destination=Lewes+Railway+Station,+Lewes,+East+Sussex,+UK&waypoints=Cliffe+High+Street,+Lewes,+East+Sussex,+UK|River+Ouse+Bridge,+Lewes,+East+Sussex,+UK|Mount+Caburn,+East+Sussex,+UK|Glynde+Reach,+East+Sussex,+UK|Lewes+Priory+Park,+Lewes,+East+Sussex,+UK&travelmode=walking"
+       target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+      </svg>
+      Open route in Google Maps
+    </a>
+
+    <!-- WALK ROUTE -->
+    <div class="section-head">
+      <div class="section-head-line"></div>
+      <h2>The Walk</h2>
+      <div class="section-head-line"></div>
     </div>
-    <div class="stat">
-      <div class="stat-label">Difficulty</div>
-      <div class="stat-value">Moderate</div>
+
+    <ol class="timeline">
+      <li class="tl-stop">
+        <div class="tl-dot start">1</div>
+        <div class="tl-name">Lewes Railway Station</div>
+        <div class="tl-note">Start here — coffee at Ground Lewes is just a two-minute walk away</div>
+      </li>
+      <li class="tl-stop">
+        <div class="tl-dot">2</div>
+        <div class="tl-name">Cliffe High Street</div>
+        <div class="tl-note">Head east through the town past Harvey's Brewery</div>
+      </li>
+      <li class="tl-stop">
+        <div class="tl-dot">3</div>
+        <div class="tl-name">River Ouse Bridge</div>
+        <div class="tl-note">Cross the river and leave the town behind</div>
+      </li>
+      <li class="tl-stop">
+        <div class="tl-dot">4</div>
+        <div class="tl-name">Mount Caburn</div>
+        <div class="tl-note">The main event — a steady climb rewarded with sweeping South Downs views</div>
+      </li>
+      <li class="tl-stop">
+        <div class="tl-dot">5</div>
+        <div class="tl-name">Glynde Reach</div>
+        <div class="tl-note">Scenic riverside path heading back toward town</div>
+      </li>
+      <li class="tl-stop">
+        <div class="tl-dot">6</div>
+        <div class="tl-name">Lewes Priory Park</div>
+        <div class="tl-note">Optional detour — medieval ruins in an open green space</div>
+      </li>
+      <li class="tl-stop">
+        <div class="tl-dot end">↩</div>
+        <div class="tl-name">Lewes Railway Station</div>
+        <div class="tl-note">Back where you started — plenty of pubs nearby</div>
+      </li>
+    </ol>
+
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span><strong>Tip:</strong> Google Maps can miss South Downs footpaths and may route you along roads. Use <strong>AllTrails</strong> or <strong>OS Maps</strong> for the actual walking directions, and this page as your stop reference.</span>
     </div>
-    <div class="stat">
-      <div class="stat-label">Mode</div>
-      <div class="stat-value">Walking</div>
+
+
+    <!-- COFFEE -->
+    <div class="section-head">
+      <div class="section-head-line"></div>
+      <h2>Coffee</h2>
+      <div class="section-head-line"></div>
     </div>
-  </div>
+    <ul class="places">
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Ground Lewes</span>
+          <span class="place-tag">Café</span>
+        </div>
+        <p class="place-note">The local favourite. Turn right out of the station past the Depot Cinema and right again onto Lansdown Road. The cappuccino is particularly good, and you can ponder views of the South Downs while you wait.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Pestle and Mortar</span>
+          <span class="place-tag">Café · Noodle bar</span>
+        </div>
+        <p class="place-note">Noodle bar, café, tea room and Asian grocery rolled into one. There's a lovely hidden garden out the back. Close to Ground Lewes — worth knowing about for a longer lunch stop too.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Cafe Du Jardin</span>
+          <span class="place-tag">French café</span>
+        </div>
+        <p class="place-note">A real hidden gem tucked in the courtyard of Pastorale Antiques on Malling Street. French-style breakfasts (coffee, croissants, omelettes) and proper lunches — baked camembert, croque monsieur, steak frites.</p>
+      </li>
+    </ul>
 
-  <h2>Stops in order</h2>
-  <ol class="stops">
-    <li class="stop">
-      <div class="stop-num">1</div>
-      <div>
-        <div class="stop-name">Lewes Railway Station</div>
-        <div class="stop-note">Start here — optional coffee at Ground Coffee House nearby</div>
-      </div>
-    </li>
-    <li class="stop">
-      <div class="stop-num">2</div>
-      <div>
-        <div class="stop-name">Cliffe High Street</div>
-        <div class="stop-note">Cross toward the countryside</div>
-      </div>
-    </li>
-    <li class="stop">
-      <div class="stop-num">3</div>
-      <div>
-        <div class="stop-name">River Ouse Bridge</div>
-        <div class="stop-note">Cross into open countryside</div>
-      </div>
-    </li>
-    <li class="stop">
-      <div class="stop-num">4</div>
-      <div>
-        <div class="stop-name">Mount Caburn</div>
-        <div class="stop-note">Main viewpoint — steady climb, worth it</div>
-      </div>
-    </li>
-    <li class="stop">
-      <div class="stop-num">5</div>
-      <div>
-        <div class="stop-name">Glynde Reach</div>
-        <div class="stop-note">Scenic riverside return path</div>
-      </div>
-    </li>
-    <li class="stop">
-      <div class="stop-num">6</div>
-      <div>
-        <div class="stop-name">Lewes Priory Park</div>
-        <div class="stop-note">Optional stop — ruins and open green</div>
-      </div>
-    </li>
-    <li class="stop">
-      <div class="stop-num end">7</div>
-      <div>
-        <div class="stop-name">Lewes Railway Station</div>
-        <div class="stop-note">End of route</div>
-      </div>
-    </li>
-  </ol>
 
-  <div class="tip">
-    <strong>Tip:</strong> Google Maps may miss some South Downs footpaths. Follow signs for "Mount Caburn" or use AllTrails alongside Maps if needed.
-  </div>
+    <!-- FOOD & DRINK -->
+    <div class="section-head">
+      <div class="section-head-line"></div>
+      <h2>Food &amp; Drink</h2>
+      <div class="section-head-line"></div>
+    </div>
+    <ul class="places">
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">The Swan Inn</span>
+          <span class="place-tag">Pub · Lunch</span>
+        </div>
+        <p class="place-note">A beloved local at the end of Southover Street. Cosy with a roaring fire in winter; a chocolate-box cottage garden in summer. Simple, well-priced food — mackerel salad, Sunday roasts. Time-worn and genuinely local.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Anne of Cleves House Café</span>
+          <span class="place-tag">Café · Garden</span>
+        </div>
+        <p class="place-note">Café inside the Tudor garden of the 16th-century Anne of Cleves House on Southover Street. A calm, historic spot for a mid-afternoon break.</p>
+      </li>
+    </ul>
 
-  <!-- COFFEE -->
-  <div class="section-divider">
-    <h2>Coffee</h2>
-  </div>
-  <ul class="places">
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Ground Lewes</span>
-        <span class="place-tag">Café</span>
-      </div>
-      <div class="place-note">Local favourite on Lansdown Road (turn right out of station past the Depot Cinema). The cappuccino is particularly good. Views of the South Downs while you wait.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Pestle and Mortar</span>
-        <span class="place-tag">Café · Noodle bar · Asian grocery</span>
-      </div>
-      <div class="place-note">Noodle bar, café, tea room and Asian grocery rolled into one, with a lovely hidden garden out the back. Close to Ground Lewes.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Cafe Du Jardin</span>
-        <span class="place-tag">French café</span>
-      </div>
-      <div class="place-note">Tucked in the courtyard of Pastorale Antiques on Malling Street. Open for French-style breakfasts (coffee, croissants, omelettes) and lunch (baked camembert, croque monsieur, steak frites). Hidden gem.</div>
-    </li>
-  </ul>
 
-  <!-- FOOD & DRINK -->
-  <div class="section-divider">
-    <h2>Food &amp; Drink</h2>
-  </div>
-  <ul class="places">
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">The Swan Inn</span>
-        <span class="place-tag">Pub · Lunch</span>
-      </div>
-      <div class="place-note">Beloved local pub at the end of Southover Street. Cosy with a roaring fire in winter and a chocolate-box cottage garden for summer. Simple, well-priced food — mackerel salad, Sunday roasts. Relaxed, time-worn atmosphere.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Anne of Cleves House Café</span>
-        <span class="place-tag">Café · Garden</span>
-      </div>
-      <div class="place-note">Café inside the Tudor garden of the 16th-century Anne of Cleves House on Southover Street. A peaceful spot.</div>
-    </li>
-  </ul>
+    <!-- SHOPPING -->
+    <div class="section-head">
+      <div class="section-head-line"></div>
+      <h2>Shopping</h2>
+      <div class="section-head-line"></div>
+    </div>
+    <ul class="places">
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Fifteenth Century Bookshop</span>
+          <span class="place-tag">Bookshop</span>
+        </div>
+        <p class="place-note">One of the highlights of the High Street — rare and collectable books in a stunning yellow half-timbered building. Sits at the foot of Keere Street, the town's most famous twitten.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">The Needlemakers</span>
+          <span class="place-tag">Shopping · Vintage</span>
+        </div>
+        <p class="place-note">A Victorian red-brick landmark, once a WW1 needle factory, now full of unusual independent boutiques across three floors. The vintage shop downstairs has an incredible collection of old tins.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Lewes Flea Market</span>
+          <span class="place-tag">Market · Antiques</span>
+        </div>
+        <p class="place-note">On Market Street, almost opposite The Needlemakers. A good rummage spot — furniture, ceramics, jewellery, artwork and all kinds of curios.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Pastorale Antiques</span>
+          <span class="place-tag">Antiques</span>
+        </div>
+        <p class="place-note">A dreamy faded yellow building on Malling Street that was once a coaching inn. French antique specialists — stock spills across the courtyard and up the stairs. Also home to Cafe Du Jardin.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">71 The Maker's Gallery</span>
+          <span class="place-tag">Jewellery · Gallery</span>
+        </div>
+        <p class="place-note">Beautiful independent jewellery and craft on the High Street. Hard to walk past without stopping.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Goods Lewes</span>
+          <span class="place-tag">Homewares · Vintage</span>
+        </div>
+        <p class="place-note">A dreamy mix of vintage cane furniture and accessories — funky blankets, cushions, home objects. High Street.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">From Victoria</span>
+          <span class="place-tag">Gift shop</span>
+        </div>
+        <p class="place-note">Botanic-themed gift shop on the High Street. Good for presents.</p>
+      </li>
+    </ul>
 
-  <!-- SHOPPING -->
-  <div class="section-divider">
-    <h2>Shopping</h2>
-  </div>
-  <ul class="places">
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Fifteenth Century Bookshop</span>
-        <span class="place-tag">Bookshop</span>
-      </div>
-      <div class="place-note">A highlight of the High Street — rare and collectable books in a stunning yellow half-timbered building. At the foot of Keere Street, the town's most famous twitten.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">The Needlemakers</span>
-        <span class="place-tag">Shopping · Vintage</span>
-      </div>
-      <div class="place-note">Victorian red-brick landmark that was a WW1 needle factory. Now home to unusual boutiques across three floors. Don't miss the vintage shop downstairs with an incredible collection of vintage tins.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Lewes Flea Market</span>
-        <span class="place-tag">Market · Antiques</span>
-      </div>
-      <div class="place-note">On Market Street, almost opposite The Needlemakers. All kinds of trinkets and curios — furniture, ceramics, jewellery, artwork.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Pastorale Antiques</span>
-        <span class="place-tag">Antiques</span>
-      </div>
-      <div class="place-note">Malling Street, in a dreamy faded yellow building that was once a coaching inn. Specialises in French antiques; stock spills out into the courtyard. Also home to Cafe Du Jardin.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">71 The Maker's Gallery</span>
-        <span class="place-tag">Jewellery · Gallery</span>
-      </div>
-      <div class="place-note">Beautiful jewellery and craft on the High Street.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Goods Lewes</span>
-        <span class="place-tag">Homewares · Vintage</span>
-      </div>
-      <div class="place-note">Dreamy mix of vintage cane furniture and accessories like funky blankets. High Street.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">From Victoria</span>
-        <span class="place-tag">Gift shop</span>
-      </div>
-      <div class="place-note">Botanic-themed gift shop on the High Street.</div>
-    </li>
-  </ul>
 
-  <!-- SIGHTS & HIDDEN GEMS -->
-  <div class="section-divider">
-    <h2>Sights &amp; Hidden Gems</h2>
-  </div>
-  <ul class="places">
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Keere Street &amp; the Twittens</span>
-        <span class="place-tag">Walking · History</span>
-      </div>
-      <div class="place-note">Keere Street is Lewes's most famous twitten — a cobbled lane on an incline lined with heritage homes and secret gardens. The wider network of narrow Anglo-Saxon alleyways (Paine's Passage, St Swithuns Lane, Pipe Passage, Green Lane) is full of historic houses, trailing plants and great views.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Anne of Cleves House</span>
-        <span class="place-tag">History · Museum</span>
-      </div>
-      <div class="place-note">16th-century timber-fronted Wealden hall house on Southover Street. Given to Anne of Cleves in her divorce settlement from Henry VIII in 1541 (she never lived here). Good period architecture and a Tudor garden.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">The Round House</span>
-        <span class="place-tag">Curiosity</span>
-      </div>
-      <div class="place-note">A bizarre home set inside an old windmill on Pipe Passage — bought by Virginia Woolf but never lived in. Easy to miss, worth finding.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Harvey's Brewery</span>
-        <span class="place-tag">Landmark</span>
-      </div>
-      <div class="place-note">Pass it on Cliffe High Street heading east across the bridge over the River Ouse. Lewes's own brewery, a local institution.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Lewes Land Nature Reserve</span>
-        <span class="place-tag">Nature · Green space</span>
-      </div>
-      <div class="place-note">A hidden town green space on an old railway yard reclaimed by nature, complete with a spiralling reed bed. Near the golf course with views across town.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Depot Cinema</span>
-        <span class="place-tag">Cinema</span>
-      </div>
-      <div class="place-note">Independent arthouse cinema just outside the station on Lewes Road. Screens off-beat and independent films.</div>
-    </li>
-    <li class="place">
-      <div class="place-header">
-        <span class="place-name">Glynde &amp; Glyndebourne Opera House</span>
-        <span class="place-tag">Day trip · Culture</span>
-      </div>
-      <div class="place-note">A footpath near Lewes heads to the pretty village of Glynde, home to the world-famous Glyndebourne Opera House. Worth the extra walk if you have time.</div>
-    </li>
-  </ul>
+    <!-- SIGHTS & HIDDEN GEMS -->
+    <div class="section-head">
+      <div class="section-head-line"></div>
+      <h2>Sights &amp; Hidden Gems</h2>
+      <div class="section-head-line"></div>
+    </div>
+    <ul class="places">
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Keere Street &amp; the Twittens</span>
+          <span class="place-tag">Walking · History</span>
+        </div>
+        <p class="place-note">Keere Street is the most famous twitten in Lewes — a cobbled lane on an incline lined with heritage homes and secret gardens. The wider network of Anglo-Saxon alleyways (Paine's Passage, St Swithuns Lane, Pipe Passage, Green Lane) is full of historic houses, trailing plants and unexpected views. Don't rush through them.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Anne of Cleves House</span>
+          <span class="place-tag">History · Museum</span>
+        </div>
+        <p class="place-note">A 16th-century timber-fronted Wealden hall house on Southover Street, given to Anne of Cleves as part of her divorce settlement from Henry VIII in 1541 — though she never actually lived here. Lovely period architecture and a Tudor garden.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">The Round House</span>
+          <span class="place-tag">Curiosity</span>
+        </div>
+        <p class="place-note">A peculiar home set inside an old windmill on Pipe Passage — bought by Virginia Woolf, but never lived in. Easy to walk past without noticing. Worth seeking out.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Harvey's Brewery</span>
+          <span class="place-tag">Landmark</span>
+        </div>
+        <p class="place-note">Pass it heading east along Cliffe High Street toward the river. Lewes's own brewery and a proper local institution — you'll likely smell it before you see it.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Lewes Land Nature Reserve</span>
+          <span class="place-tag">Nature · Green space</span>
+        </div>
+        <p class="place-note">A hidden town green space on an old railway yard, quietly reclaimed by nature. Complete with a spiralling reed bed. Near the golf course, with views back across the town.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Depot Cinema</span>
+          <span class="place-tag">Cinema</span>
+        </div>
+        <p class="place-note">An independent arthouse cinema right outside the station on Lewes Road. Shows off-beat and independent films — a good option if the weather turns.</p>
+      </li>
+      <li class="place-card">
+        <div class="place-top">
+          <span class="place-name">Glynde &amp; Glyndebourne Opera House</span>
+          <span class="place-tag">Day trip · Culture</span>
+        </div>
+        <p class="place-note">A footpath from near Lewes leads to the pretty village of Glynde and the world-famous Glyndebourne Opera House. Worth the extra mile if you have time to spare.</p>
+      </li>
+    </ul>
 
-  <footer>
-    <a href="index.html">Back to Sand Spline</a>
-  </footer>
+    <div class="footer">
+      <a href="index.html">← Back to Sand Spline</a>
+    </div>
+
+  </main>
 
 </body>
 </html>
